@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap');
 
 body {
-  background-color: #F8F3E8;
+  background-color: #F8F3E8 !important;
 }
 :root {
   --primary: #1e5631;

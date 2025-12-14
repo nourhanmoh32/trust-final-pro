@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Regester } from './regester';
+import { ForgotPass } from './forgot-pass';
 
-describe('Regester', () => {
-  let component: Regester;
-  let fixture: ComponentFixture<Regester>;
+describe('ForgotPass', () => {
+  let component: ForgotPass;
+  let fixture: ComponentFixture<ForgotPass>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Regester]
+      imports: [ForgotPass]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Regester);
+    fixture = TestBed.createComponent(ForgotPass);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

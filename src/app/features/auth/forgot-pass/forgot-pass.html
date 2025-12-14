@@ -1,0 +1,41 @@
+<section >
+    <div class="forgotForm" id="forgotPassword">
+        <div class="container">
+            <div class="forgotContent">
+                <h2>نسيت كلمة السر؟</h2>
+                <p>من فضلك أدخل بريدك الإلكتروني لعملية التحقق, سوف نرسل رمز خاص على بريدك.</p>
+            </div>
+
+            <div class=" mb-3">
+                <label for="formGroupExampleInput" class="form-label">البريد الإلكتروني</label>
+                <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="أدخل البريد الإلكتروني الخاص بك">
+            </div>
+
+            <button type="submit">استمرار..</button>
+        </div>
+    </div>
+</section>
+
+<!-- verfiction code -->
+<section >
+    <div class="forgotForm" id="verfiction">
+        <div class="container">
+            <div class="forgotContent">
+                <h2>أدخل الكود المكون من 3 أرقام</h2>
+                <p>الكود المكون من 3 أرقام قد تم إرساله إلى بريدك الإلكتروني.</p>
+            </div>
+
+            <div class="inputs mb-3">
+                <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="_">
+                <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="_">
+                <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="_">
+                <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="_">
+            </div>
+
+            <div class="verfButtons">
+                <button type="submit">تأكيد</button>
+                <button type="submit" class="cancel bg-danger">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</section>

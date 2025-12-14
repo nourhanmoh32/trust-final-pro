@@ -1,1 +1,51 @@
-<p>login works!</p>
+<!-- login -->
+<section>        
+    <!-- <img src="/assets/images/1f2b03a2899af5320ab145cac48bce48.jpg" alt="" style=""> -->
+    <div class="logForm">
+        <div id="logIn" class=" mb-3 container" >
+            <h2>تسجيل الدخول</h2>
+            <form [formGroup]="profileForm" (ngSubmit)="submiting()" id="form1" >
+                <!-- email input -->
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">البريد الإلكتروني</label>
+                    <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="أدخل البريد الإلكتروني الخاص بك">
+                </div>
+                <!-- reqierd email -->
+                @if (email.invalid && email.touched) {
+                    <div class="errors">
+                        <p>البريد الإلكتروني مطلوب!</p>
+                    </div>
+                }
+                
+                <!-- password input -->
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">الرقم السري</label>
+                    <input formControlName="password" type="text" class="form-control" id="password" placeholder="أدخل الرقم السري الخاص بك">
+                </div>
+                <!-- reqierd pass -->
+                @if (password.invalid &&  password.touched) {
+                    <div class="errors">
+                        <p>ادخل الرقم السري الصحيح!</p>
+                    </div>
+                }
+
+                <!-- forget password & remember me -->
+                <div class="forgot-remember">
+                    <a class="forgot text-danger" routerLink="/forgotPass">هل نسيت كلمة السر؟</a>
+
+                    <label class="remember">
+                        تَذَكرني
+                        <input type="checkbox" formControlName="remember">
+                    </label>
+                </div>
+            
+                <!-- entering button  -->
+                <button type="submit" id="log">تسجيل الدخول</button> 
+            </form>
+            <div class="small-p">
+            <p class="p1" >ليس لديك حساب؟</p>
+            <a class="a1" href="#" routerLink="/register">تسجيل جديد!</a>
+            </div>
+        </div>
+    </div>
+</section>    
