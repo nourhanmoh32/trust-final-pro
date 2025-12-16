@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators, ɵInternalFormsSharedModule } from "@angular/forms";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-pass',
-  imports: [],
+  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, RouterLink],
   templateUrl: './forgot-pass.html',
   styleUrl: './forgot-pass.css',
 })
 export class ForgotPass {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  forgotForm = this.fb.group({
+  email: ['', [Validators.required, Validators.email]],
+  });
+
+  // verfy email
+  sendEmail(){
+
+  }
 
 }

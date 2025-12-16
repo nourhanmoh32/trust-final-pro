@@ -104,13 +104,13 @@ form button:hover {
   margin-top: 18px;
   font-size: 22px;
 }
-.small-p .p1 {
+.small-p p {
   margin-right: 26px;
   text-decoration: none;
   color: black;
   float: right;
 }
-.small-p .a1 {
+.small-p a {
   background: none;
   margin-left: 26px;
   float: left;

@@ -1,0 +1,23 @@
+<section >
+    <div class="codeForm" id="verfiction">
+        <div class="container">
+            <div class="verfyContent">
+                <h2>أدخل الكود المكون من 3 أرقام</h2>
+                <p>الكود المكون من 3 أرقام قد تم إرساله إلى بريدك الإلكتروني.</p>
+            </div>
+
+            <form [formGroup]="codeForm" (ngSubmit)="verify()">
+                <div class="inputs mb-3">
+                    <input formControlName="code1"  class="form-control" placeholder="__">
+                    <input formControlName="code2"  class="form-control"  placeholder="__">
+                    <input formControlName="code3"  class="form-control"  placeholder="__">
+                </div>
+            </form>
+
+            <div class="verfButtons">
+                <button type="submit">تأكيد</button>
+                <button type="submit" class="cancel bg-danger">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</section>

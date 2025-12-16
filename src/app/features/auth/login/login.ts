@@ -1,42 +1,61 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css'],
 })
 export class Login {
   private fb = inject(FormBuilder);
+  private authApi = inject(AuthService);
   private router = inject(Router);
 
-  profileForm = this.fb.group({
+  loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password:['', Validators.required],
-    rememberMe: [false]
-  })
+    password: ['', Validators.required],
+    rememberMe: [false],
+  });
 
-  
-  get email(){
-    return this.profileForm.controls.email;
-  }
-  get password(){
-    return this.profileForm.controls.password;
+  get email() {
+    return this.loginForm.get('email');
   }
 
-  submiting(){
-    if (this.profileForm.invalid){
-      this.profileForm.markAllAsTouched();
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  get rememberMe() {
+    return this.loginForm.get('rememberMe')?.value;
+  }
+
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
       return;
     }
-    //in case of valid form
-    console.log("form value: ", this.profileForm.value);
-    
-    // api
 
-    //routing to home sec
-    this.router.navigate(['/home'])
+    const loginData = {
+      email: this.email?.value,
+      password: this.password?.value
+    };
+
+    this.authApi.login(loginData, this.rememberMe).subscribe(user => {
+      if (this.authApi.currentUser()?.token) {
+        alert(` مرحبًا ${this.authApi.currentUser()?.fullName} `);
+        this.router.navigate(['/home']);
+      } else {
+        alert('لبريد الإلكتروني أو الرقم السري خطأ');
+      }
+      // if (user?.token) {
+      //   this.router.navigate(['/home']);
+      // } else {
+      //   alert('الإيميل أو الباسورد غلط');
+      // }
+    });
   }
 }

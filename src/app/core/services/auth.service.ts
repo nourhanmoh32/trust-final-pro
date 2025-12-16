@@ -1,0 +1,67 @@
+import { Injectable, signal, computed } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, tap } from 'rxjs/operators';
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private readonly baseUrl = 'https://693f43b012c964ee6b6f8455.mockapi.io/api/v/users';
+
+  //current user Signal
+  private _currentUser = signal<any | null>(this.getUserFromStorage());
+
+  currentUser = computed(() => this._currentUser());
+
+  constructor(private http: HttpClient) {}
+
+  // loging
+  login(data: any, rememberMe: boolean) {
+    const params = new HttpParams()
+      .set('email', data.email)
+      .set('password', data.password);
+
+    return this.http.get<any[]>(this.baseUrl, { params }).pipe(
+      map(users => users.length ? users[0] : null),
+      tap(user => {
+        if (user) {
+          //fake token 
+          const userWithToken = { ...user, token: 'fake-token-' + user.id };
+          if (rememberMe) {
+            localStorage.setItem('currentUser', JSON.stringify(userWithToken));
+          }
+          this._currentUser.set(userWithToken);
+        }
+      })
+    );
+  }
+
+  // تسجيل مستخدم جديد
+  register(dto: any) {
+    return this.http.post<any>(this.baseUrl, dto).pipe(
+      tap(user => {
+        if (user) {
+          const userWithToken = { ...user, token: 'fake-token-' + user.id };
+          localStorage.setItem('currentUser', JSON.stringify(userWithToken));
+          this._currentUser.set(userWithToken);
+        }
+      })
+    );
+  }
+
+  // جلب المستخدم من localStorage عند بداية التطبيق
+  private getUserFromStorage(): any | null {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
+  }
+
+  // التحقق من وجود token
+  isLoggedIn(): boolean {
+    const user = this._currentUser();
+    return !!user?.token;
+  }
+
+  // تسجيل الخروج
+  logout(): void {
+    localStorage.removeItem('currentUser');
+    this._currentUser.set(null);
+  }
+}

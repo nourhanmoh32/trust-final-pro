@@ -6,34 +6,42 @@ import { Lessons } from './features/lessons/lessons';
 import { Exams } from './features/exams/exams';
 import { Register } from './features/auth/register/register';
 import { ForgotPass } from './features/auth/forgot-pass/forgot-pass';
+import { VerfyCode } from './features/auth/verfy-code/verfy-code';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HeroSec
+    component: HeroSec,
   },
   {
     path: 'login',
-    component: Login
+    loadComponent:() => import('./features/auth/login/login').then(l => l.Login),
   },
   {
     path: 'forgotPass',
-    component: ForgotPass
+    component: ForgotPass,
   },
   {
+    path: 'verfyCode',
+    component: VerfyCode,
+  },
+
+  {
     path: 'register',
-    component: Register
+    component: Register,
   },
   {
     path: 'home',
-    component: Home
+    loadComponent: () => import('./features/home/home').then((m) => m.Home),
+    canActivate: [authGuard],
   },
   {
     path: 'lessons',
-    component: Lessons
+    component: Lessons,
   },
   {
     path: 'exams',
-    component: Exams
+    component: Exams,
   },
 ];
