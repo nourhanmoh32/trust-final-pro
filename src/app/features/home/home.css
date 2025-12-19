@@ -1,0 +1,45 @@
+section {
+  min-height: 100vh;  
+  background-image: url('/assets/images/close-up-shot-opened-quran-festive-table.jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;   
+  background-position: center;
+  display: flex;
+  justify-content: center;  
+  align-items: center;   
+  width: 100%;
+  direction: rtl;
+}
+
+.secContent {
+  text-align: center;  
+  font-size: 30px;  
+}
+
+/* header */
+h2{
+    color: var(--bg-white);
+}
+h2 span{
+    color: var(--biege);
+}
+
+/* buttons */
+.topBtns {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+/* log out btn */
+.logOutBtn {
+  margin-top: 20px;
+  
+}
+.logOutBtn button{
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
+

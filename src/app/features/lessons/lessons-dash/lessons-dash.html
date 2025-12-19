@@ -1,0 +1,13 @@
+<section class="container">
+    
+    @for ( lessonCard of lessonCards(); track lessonCard.id) {
+        <div class="card">
+            <div class="cardTitle">
+                <h4> {{lessonCard.lesson}} ({{lessonCard.order}}): </h4>
+                <h3>{{lessonCard.title}}</h3>
+            </div>
+            <button class="btn-main"  [routerLink]="['/',lessonCard.path]">عرض الدرس <i class="fa-solid fa-book-open"></i></button>
+        </div>
+    }
+    
+</section>

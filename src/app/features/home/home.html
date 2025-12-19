@@ -1,0 +1,12 @@
+<section>
+    <div class="secContent">
+        <h2>أهلًا "<span> {{authApi.currentUser()?.fullName}} </span>"</h2>
+        <div class="topBtns">
+            <button class="btn-main" routerLink="/profile">ملفك الشخصي</button>
+            <button class="btn-main" routerLink="/lessonsDash">ابدأ التعلم!</button>
+        </div>
+        <div class="logOutBtn">
+            <button class="btn btn-danger" (click)="logout()">تسجيل خروج</button>
+        </div>
+    </div>  
+</section>
