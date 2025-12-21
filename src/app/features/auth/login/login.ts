@@ -49,7 +49,7 @@ export class Login {
         alert(` مرحبًا ${this.authApi.currentUser()?.fullName} `);
         this.router.navigate(['/home']);
       } else {
-        alert('لبريد الإلكتروني أو الرقم السري خطأ');
+        alert('البريد الإلكتروني أو الرقم السري خطأ');
       }
       // if (user?.token) {
       //   this.router.navigate(['/home']);

@@ -22,6 +22,7 @@ export class Register {
     age: [''],
     phone: [''],
     gender: [''],
+    country:[''],
     rememberMe: [false]
   });
 

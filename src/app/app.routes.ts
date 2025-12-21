@@ -38,7 +38,8 @@ export const routes: Routes = [
   },
   {
     path: 'lessonsDash',
-    loadComponent: () => import('./features/lessons/lessons-dash/lessons-dash').then(m => m.LessonsDash)
+    loadComponent: () => import('./features/lessons/lessons-dash/lessons-dash').then(m => m.LessonsDash),
+    canActivate: [authGuard]
   },
   
   {
@@ -52,6 +53,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/lessons/lesson2/lesson2').then(m => m.Lesson2)
   },
+
+  {
+    path: 'profile',
+    loadComponent: ()=>
+      import('./features/profile/profile').then(m => m.Profile)
+  },
+
   {
     path: 'exams',
     component: Exams,

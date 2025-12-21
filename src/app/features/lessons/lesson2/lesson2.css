@@ -1,0 +1,102 @@
+* {
+  direction: rtl;
+}
+section {
+  padding: 20px;
+}
+.container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.959);
+  border-radius: 16px;
+  border: 1.5px solid rgba(30, 86, 49, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 22px 29px;
+  margin: 20px;
+}
+h2 {
+  color: var(--primary);
+}
+.container h3 {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* content */
+#noon {
+  padding: 30px;
+  contain: content;
+}
+
+#noon .noon-title {
+  text-align: center;
+}
+#noon .noon-title p {
+  font-size: 17px;
+  line-height: 42px;
+  color: var(--text-dark);
+  margin-bottom: 35px;
+}
+
+#noon .noon-title p span {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+#noon .noon-title h3 {
+  color: var(--primary);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#noon .container .cards-div .noon-col .card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto;
+  border-radius: 16px;
+  border: 1px solid inherit;
+  background-color: var(--biege);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+#noon .container .cards-div .noon-col .card:hover {
+  transform: translateY(-4px);
+}
+
+#noon .container .cards-div .noon-col .card .card-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+#noon .container .cards-div .noon-col .card .card-text {
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+/* finish btn */
+.finish-btn {
+  font-size: 20px;
+  margin: auto;
+  width: fit-content;
+}
+.finish-btn:hover i {
+  color: var(--primary);
+  animation: fa-flip 1s;
+}
+
+/* exam */
+.exam {
+  margin: 20px auto;
+}
+.exam button:hover i {
+  animation: fa-beat-fade 1s infinite;
+}

@@ -1,0 +1,152 @@
+ * {
+  direction: rtl;
+}
+section{
+    background-image: url('/assets/images/a.jpg');
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 16px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.infoCard, .card {
+  background: rgba(255, 255, 255, 0.959);
+  border-radius: 16px;
+  border: 1.5px solid rgba(30, 86, 49, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 22px 26px;
+}
+
+/* Info Card */
+.infoCard {
+  display: flex;
+  gap: 20px;
+}
+.infoCard h3 {
+  font-size: 20px;
+  padding: 10px;
+  color: var(--text-dark);
+}
+.infoCard span {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Progress cards */
+.progressCards {
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.progressCards .row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.progressCards .progCard {
+  max-width: 200px;
+  gap: 5px;   
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  background: rgba(235, 213, 169, 0.4);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid var(--secondary);
+  text-align: center;
+}
+.progressCards h3,
+.examProg h3 {
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.LessonsProg h4,
+.examProg h4 {
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+.LessonsProg span,
+.examProg span {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* exams degrees */
+.examsDegrees h3 {
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--border-radius);
+}
+
+.table thead th {
+  background: rgba(30, 86, 49, 0.9);
+  color: var(--bg-light);
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.table tbody td,
+.table tbody th {  
+  background-color: rgba(235, 213, 169, 0.4);
+;
+  padding: 12px;
+  text-align: center;
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.table tbody tr {
+  transition: background 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(201, 168, 106, 0.25);
+}
+
+/* responsive table */
+@media (max-width: 768px) {
+  .infoCard {
+    grid-template-columns: 1fr;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  .table tbody td,
+  .table tbody th {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border: none;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--primary);
+  }
+}

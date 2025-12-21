@@ -1,12 +1,10 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly baseUrl = 'https://693f43b012c964ee6b6f8455.mockapi.io/api/v/users';
-  // private router = inject(Router);
 
   //current user Signal
   private _currentUser = signal<any | null>(this.getUserFromStorage());

@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Gulzar&family=Mirza:wght@600&family=Reem+Kufi:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 
 body {
   background-color: #F8F3E8 !important;
-  font-family: 'Amiri', serif !important ;
+  font-family: "Noto Kufi Arabic", sans-serif !important;
 }
 :root {
   --primary: #1e5631;
@@ -19,8 +19,8 @@ body {
   --border-radius: 12px;
 }
 .btn-main {
-  background: var(--secondary);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--bg-light);
   border: none;
   font-weight: bold;
   padding: 10px 25px;
@@ -30,4 +30,6 @@ body {
 }
 .btn-main:hover {
     background:var(--biege) ;
+    color: var(--text-dark);
 }
+

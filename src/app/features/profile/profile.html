@@ -1,1 +1,56 @@
-<p>profile works!</p>
+<section>
+  <div class="container">
+    <!-- information card -->
+    <div class="infoCard row">
+      <div class="col">
+        <h3><span>الاسم:</span> {{ user()?.fullName }}</h3>
+        <h3><span>رقم الهاتف:</span> {{ user()?.phone }}</h3>
+        <h3><span>البلد:</span> {{ user()?.country }}</h3>
+      </div>
+      <div class="col">
+        <h3><span>البريد الإلكتروني:</span> {{ user()?.email }}</h3>
+        <h3><span>العُمر:</span> {{ user()?.age }}</h3>
+      </div>
+    </div>
+
+    <!-- progress Cards -->
+    <div class="progressCards card">
+      <h3>الإنجاز</h3>
+      <div class="row">
+        <div class="LessonsProg progCard col-sm-6">
+          <h3>الدروس</h3>
+          <h4><span>0</span> من 6</h4>
+        </div>
+        <div class="examProg progCard col-sm-6">
+          <h3>الاختبارات</h3>
+          <h4><span>0</span> من 6</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- exams degrees -->
+    <div class="examsDegrees card">
+      <h3>نتائج الاختبارات</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">اختبار درس..</th>
+            <th scope="col">الدرجة</th>
+            <th scope="col">تاريخ التسليم</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (lesson of lessonstable(); track lesson.id) {
+            <tr>
+                <th scope="row">{{lesson.order}}</th>
+                <td data-label="الدرس">{{lesson.title}}</td>
+                <td data-label="الدرجة">8 / 10</td>
+                <td data-label="تاريخ التسليم">2025/09/12</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

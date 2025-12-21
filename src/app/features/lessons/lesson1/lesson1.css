@@ -1,0 +1,53 @@
+* {
+  direction: rtl;
+}
+section {
+  padding: 20px;
+}
+.container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.959);
+  border-radius: 16px;
+  border: 1.5px solid rgba(30, 86, 49, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 22px 29px;
+  margin: 20px;
+}
+h2{
+    color: var(--primary);
+}
+.container h3{
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+/* Carousel */
+#carouselExampleControls {
+  margin: 20px auto;
+  max-width: 700px;
+  box-shadow: 8px 8px 9px rgb(167, 160, 160);
+}
+
+/* finish btn */
+.finish-btn{
+    font-size: 20px;
+    margin: auto;
+    width: fit-content;
+}
+.finish-btn:hover i{
+    color: var(--primary);
+    animation: fa-flip 1s ;
+}
+
+/* exam */
+.exam {
+    margin: 20px auto;
+}
+.exam button:hover i{
+    animation: fa-beat-fade 1s infinite;
+}
