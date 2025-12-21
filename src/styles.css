@@ -20,7 +20,7 @@ body {
 }
 .btn-main {
   background: var(--primary);
-  color: var(--bg-light);
+  color: var(--biege);
   border: none;
   font-weight: bold;
   padding: 10px 25px;
@@ -30,6 +30,6 @@ body {
 }
 .btn-main:hover {
     background:var(--biege) ;
-    color: var(--text-dark);
+    color: var(--text-color);
 }
 
