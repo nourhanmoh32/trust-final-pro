@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { HeroSec } from './features/hero-sec/hero-sec';
 import { Login } from './features/auth/login/login';
 import { Home } from './features/home/home';
-import { Exams } from './features/exams/exams';
 import { Register } from './features/auth/register/register';
 import { ForgotPass } from './features/auth/forgot-pass/forgot-pass';
 import { VerfyCode } from './features/auth/verfy-code/verfy-code';
@@ -61,7 +60,8 @@ export const routes: Routes = [
   },
 
   {
-    path: 'exams',
-    component: Exams,
+    path: 'exam1',
+    loadComponent: ()=>
+      import('./features/exams/exam1/exam1').then(m => m.Exam1)
   },
 ];

@@ -1,6 +1,7 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,15 +16,13 @@ export class AuthService {
 
   // loging
   login(data: any, rememberMe: boolean) {
-    const params = new HttpParams()
-      .set('email', data.email)
-      .set('password', data.password);
+    const params = new HttpParams().set('email', data.email).set('password', data.password);
 
     return this.http.get<any[]>(this.baseUrl, { params }).pipe(
-      map(users => users.length ? users[0] : null),
-      tap(user => {
+      map((users) => (users.length ? users[0] : null)),
+      tap((user) => {
         if (user) {
-          //fake token 
+          //fake token
           const userWithToken = { ...user, token: 'fake-token-' + user.id };
           if (rememberMe) {
             localStorage.setItem('currentUser', JSON.stringify(userWithToken));
@@ -34,10 +33,10 @@ export class AuthService {
     );
   }
 
-  // تسجيل مستخدم جديد
+  // register
   register(dto: any) {
     return this.http.post<any>(this.baseUrl, dto).pipe(
-      tap(user => {
+      tap((user) => {
         if (user) {
           const userWithToken = { ...user, token: 'fake-token-' + user.id };
           localStorage.setItem('currentUser', JSON.stringify(userWithToken));
@@ -59,9 +58,58 @@ export class AuthService {
     return !!user?.token;
   }
 
-  // تسجيل الخروج
+  // log out
   logout(): void {
     localStorage.removeItem('currentUser');
     this._currentUser.set(null);
   }
+
+  // save exams degree
+  // saveExamDegree(result: any) {
+  //   const user = this._currentUser();
+
+  //   if (!user) {
+  //     return throwError(() => new Error('User not logged in'));
+  //   }
+
+  //   const updatedUser = {
+  //     ...user,
+  //     progress: {
+  //       lessonsCompleted: user.progress?.lessonsCompleted || [],
+  //       exams: [...(user.progress?.exams || []), result],
+  //     },
+  //   };
+  //   const { token, ...userDataToSave } = updatedUser; // حذف التوكن قبل الحفظ
+  //   return this.http.put(`${this.baseUrl}/${user.id}`, userDataToSave).pipe(
+  //     tap(() => {
+  //       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+  //       this._currentUser.set(updatedUser);
+  //     })
+  //   );
+  // }
+  saveExamDegree(result: any) {
+  const user = this._currentUser();
+  if (!user) return throwError(() => new Error('User not logged in'));
+
+  // 1. تجهيز كائن التحديث مع الحفاظ على البيانات القديمة
+  const updatedUser = {
+    ...user,
+    progress: {
+      ...user.progress, // الحفاظ على lessonsCompleted إن وجد
+      exams: [...(user.progress?.exams || []), result]
+    }
+  };
+
+  // 2. إرسال الطلب (يفضل حذف التوكن المؤقت قبل الإرسال لـ MockAPI)
+  const { token, ...payload } = updatedUser;
+
+  return this.http.put(`${this.baseUrl}/${user.id}`, payload).pipe(
+    tap((response: any) => {
+      // 3. تحديث الـ Signal والـ LocalStorage بالبيانات الجديدة + التوكن
+      const userWithToken = { ...response, token: user.token };
+      this._currentUser.set(userWithToken);
+      localStorage.setItem('currentUser', JSON.stringify(userWithToken));
+    })
+  );
+}
 }

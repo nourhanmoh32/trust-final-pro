@@ -38,16 +38,25 @@
             <th scope="col">اختبار درس..</th>
             <th scope="col">الدرجة</th>
             <th scope="col">تاريخ التسليم</th>
+            <th scope="col">وقت التسليم</th>
           </tr>
         </thead>
         <tbody>
           @for (lesson of lessonstable(); track lesson.id) {
-            <tr>
-                <th scope="row">{{lesson.order}}</th>
-                <td data-label="الدرس">{{lesson.title}}</td>
-                <td data-label="الدرجة">8 / 10</td>
-                <td data-label="تاريخ التسليم">2025/09/12</td>
-            </tr>
+          <tr>
+            <th scope="row">{{ lesson.order }}</th>
+            <td data-label="الدرس">{{ lesson.title }}</td>
+
+            @let exam = getExamForLesson(lesson.id); @if (exam) {
+            <td data-label="الدرجة">{{ exam.score }} / {{ exam.total }}</td>
+            <td data-label="تاريخ التسليم">{{ exam.date | date : 'yyyy/MM/dd' }} </td>
+            <td data-label="وقت التسليم">{{ exam.date | date:'shortTime' }} </td>
+            } @else {
+            <td data-label="الدرجة">—</td>
+            <td data-label="تاريخ التسليم">لم يتم التسليم</td>
+            <td data-label="وقت التسليم">لم يتم التسليم</td>
+            }
+          </tr>
           }
         </tbody>
       </table>

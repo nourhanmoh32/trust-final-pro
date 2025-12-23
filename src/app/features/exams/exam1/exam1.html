@@ -1,0 +1,37 @@
+<section>
+  <div class="container">
+    <h2><i class="fa-regular fa-circle-question"></i> اختبار مقدمة علم التجويد</h2>
+
+    <!-- exam card -->
+    <div class="card">
+      <form [formGroup]="examForm" (ngSubmit)="submitExam()">
+        <div class="formContent">
+          @for (question of questions; track question.id) {
+          <h4>{{ question.question }}</h4>
+
+          <div class="qOptions">
+            @for (option of question.options; track $index) {
+              <label>
+                <input type="radio" [value]="$index" [formControlName]="question.id.toString()" />
+                {{ option }}
+              </label>
+            }
+          </div>
+          <hr />
+          }
+        </div>
+
+        <button type="submit" [disabled]="submitted">إنهاء الاختبار</button>
+      </form>
+
+      <!-- result btn  -->
+      @if (showResButton) {
+        <button class="viewResultBtn" type="submit" (click)="viewResult()">عرض النتيجة</button>
+      }
+      @if (viewResultDiv) {
+        <h2>درجتك: {{ score }} / {{ questions.length }}</h2>
+      }
+
+      </div>
+    </div>
+</section>

@@ -4,7 +4,7 @@
     <div id="signup" class="mb-3 container">
       <h2>إنشاء حساب جديد</h2>
 
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="form1" class="row">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="form1" >
         <!-- Full Name -->
         <div class="mb-3">
           <label class="form-label">الاسم الثلاثي</label>
@@ -16,84 +16,84 @@
           />
         </div>
         @if (fullName?.touched && fullName?.invalid) {
-        <div class="errors">الاسم مطلوب*</div>
+        <p class="errors">الاسم مطلوب*</p>
         }
+       
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">البريد الإلكتروني</label>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="example@email.com"
+              />
+            </div>
+            @if (email?.touched && email?.invalid) {
+            <p class="errors">البريد الإلكتروني مطلوب*</p>
+            }
 
-        <div class="col">
-          <!-- Email -->
-          <div class="mb-3">
-            <label class="form-label">البريد الإلكتروني</label>
-            <input
-              type="email"
-              class="form-control"
-              formControlName="email"
-              placeholder="example@email.com"
-            />
-          </div>
-          @if (email?.touched && email?.invalid) {
-          <div class="errors">البريد الإلكتروني مطلوب*</div>
-          }
+            <!-- Password -->
+            <div class="mb-3">
+              <label class="form-label">الرقم السري</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="********"
+              />
+            </div>
+            @if (password?.touched && password?.invalid) {
+            <p class="errors">كلمة السر مطلوبة*</p>
+            }
 
-          <!-- Password -->
-          <div class="mb-3">
-            <label class="form-label">الرقم السري</label>
-            <input
-              type="password"
-              class="form-control"
-              formControlName="password"
-              placeholder="********"
-            />
-          </div>
-          @if (password?.touched && password?.invalid) {
-          <div class="errors">كلمة السر مطلوبة*</div>
-          }
+          <div class="row">
+            <!-- Phone -->
+            <div class="mb-3 col">
+              <label class="form-label">رقم الهاتف</label>
+              <input
+                type="tel"
+                class="form-control"
+                formControlName="phone"
+                placeholder="xxxxxxxxx"
+              />
+            </div>
 
-          <!-- Phone -->
-          <div class="mb-3">
-            <label class="form-label">رقم الهاتف</label>
-            <input
-              type="tel"
-              class="form-control"
-              formControlName="phone"
-              placeholder="xxxxxxxxx"
-            />
-          </div>
-        </div>
-
-        <div class="col">
-          <!-- Gender -->
-          <div class="mb-3">
-            <label class="form-label">النوع</label>
-            <select class="form-control form-select gender" formControlName="gender">
-              <option value="">اختر النوع</option>
-              <option value="male">ذكر</option>
-              <option value="female">أنثى</option>
-            </select>
+            <!-- Gender -->
+            <div class="mb-3 col">
+              <label class="form-label">النوع</label>
+              <select class="form-control form-select gender" formControlName="gender">
+                <option value="">اختر النوع</option>
+                <option value="male">ذكر</option>
+                <option value="female">أنثى</option>
+              </select>
+            </div>
           </div>
 
           <!-- Age -->
-          <div class="mb-3">
-            <label class="form-label">العُمر</label>
-            <input
-              type="number"
-              min="1"
-              class="form-control age"
-              formControlName="age"
-              placeholder="العُمر"
-            />
-          </div>
+          <div class="row">
+            <div class="mb-3 col">
+              <label class="form-label">العُمر</label>
+              <input
+                type="number"
+                min="1"
+                class="form-control age"
+                formControlName="age"
+                placeholder="العُمر"
+              />
+            </div>
 
-          <!-- country -->
-          <div class="mb-3">
-            <label class="form-label">البلد</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="country"
-              placeholder="البلد"
-            />
+            <!-- country -->
+            <div class="mb-3 col">
+              <label class="form-label">البلد</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="country"
+                placeholder="البلد"
+              />
+            </div>
           </div>
-        </div>
 
         <!-- submit -->
         <button type="submit">إنشاء حساب</button>
