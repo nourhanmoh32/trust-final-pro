@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { Layout } from '../../../core/services/layout';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,15 @@ export class Register {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthService);
   private router = inject(Router);
+  private showingNav = inject(Layout);
+
+  // hidding navbar
+  constructor() {
+    this.showingNav.showNavbar.set(false);
+  }
+  ngOnDestroy(): void {
+    this.showingNav.showNavbar.set(true);
+  }
 
   registerForm: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
@@ -22,13 +32,19 @@ export class Register {
     age: [''],
     phone: [''],
     gender: [''],
-    country:[''],
-    rememberMe: [false]
+    country: [''],
+    rememberMe: [false],
   });
 
-  get fullName() { return this.registerForm.get('fullName'); }
-  get email() { return this.registerForm.get('email'); }
-  get password() { return this.registerForm.get('password'); }
+  get fullName() {
+    return this.registerForm.get('fullName');
+  }
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
   get rememberMe() {
     return this.registerForm.get('rememberMe')?.value;
   }
@@ -39,13 +55,13 @@ export class Register {
       return;
     }
 
-    this.authApi.register(this.registerForm.value).subscribe(user => {
+    this.authApi.register(this.registerForm.value).subscribe((user) => {
       if (this.authApi.currentUser()?.token) {
         alert('تم التسجيل بنجاح!');
-      this.router.navigate(['/home']);
-    } else {
-      alert('حدث خطأ أثناء التسجيل');
-    }
+        this.router.navigate(['/home']);
+      } else {
+        alert('حدث خطأ أثناء التسجيل');
+      }
     });
   }
 }

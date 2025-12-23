@@ -32,6 +32,18 @@ form{
     flex-direction: column;
     gap: 12px;
 }
+form h4{
+    color: var(--primary);
+}
+form h4 span{
+    color: var(--secondary);
+    font-weight: bold;
+}
+form .qOptions{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
 /* submit exam btn */
 .finish-btn {
@@ -41,7 +53,7 @@ form{
 }
 .finish-btn:hover i {
   color: var(--primary);
-  animation: fa-flip 1s;
+  animation: fa-beat-fade 1s;
 }
 .finish-btn:disabled {
   cursor: not-allowed;
@@ -51,4 +63,26 @@ form{
   opacity: 0.6;
   background: var(--primary);
   color: var(--biege);
+  animation: none;
+}
+.finish-btn:hover:disabled i {
+  color: var(--biege);
+  animation: none 1s;
+}
+
+
+/* result btns */
+.resultBtns{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.viewResultBtn{
+    margin: auto;
+}
+.resultBtns h2{
+    font-size: 18px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 15px;
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-lesson2',
@@ -7,5 +8,29 @@ import { Component } from '@angular/core';
   styleUrl: './lesson2.css',
 })
 export class Lesson2 {
+  private authServe = inject(AuthService);
 
+  lessonId = 2;
+  submittedLesson = false;
+  finishLesson(){
+    if (this.submittedLesson) {
+      return;
+    }
+
+    this.submittedLesson = true;
+
+    const result = {
+      lessonId: this.lessonId
+    }
+
+    // lesson progress
+    this.authServe.saveLessonProg(result).subscribe({
+      next: () => {
+        console.log('lesson saved successfully');
+      },
+      error: (err) => {
+        console.error('lesson saving exam', err);
+      },
+    });
+  }
 }

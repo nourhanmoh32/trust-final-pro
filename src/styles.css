@@ -9,7 +9,7 @@ body {
 }
 :root {
   --primary: #1e5631;
-  --secondary: #c9a86a;
+  --secondary: #977129;
   --biege: #ebd5a9;
   --bg-light: #f7f1e3;
   --bg-white: #ffffff;
@@ -33,3 +33,15 @@ body {
     color: var(--text-color);
 }
 
+.logout-btn{
+    font-size: 20px;
+    padding: 10px 20px;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(211, 17, 17);
+    color: var(--bg-light);
+}
+.logout-btn:hover{
+  background-color: rgb(241, 55, 55);
+}

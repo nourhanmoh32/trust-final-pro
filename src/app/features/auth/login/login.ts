@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { Layout } from '../../../core/services/layout';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,18 @@ export class Login {
   private fb = inject(FormBuilder);
   private authApi = inject(AuthService);
   private router = inject(Router);
+  private showingNav = inject(Layout);
 
+  // hidding navbar
+  constructor() {
+    
+    this.showingNav.showNavbar.set(false);
+  }
+  ngOnDestroy(): void {
+    this.showingNav.showNavbar.set(true);
+  }
+
+  // valid login form
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
@@ -41,10 +53,10 @@ export class Login {
 
     const loginData = {
       email: this.email?.value,
-      password: this.password?.value
+      password: this.password?.value,
     };
 
-    this.authApi.login(loginData, this.rememberMe).subscribe(user => {
+    this.authApi.login(loginData, this.rememberMe).subscribe((user) => {
       if (this.authApi.currentUser()?.token) {
         alert(` مرحبًا ${this.authApi.currentUser()?.fullName} `);
         this.router.navigate(['/home']);

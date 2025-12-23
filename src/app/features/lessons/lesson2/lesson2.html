@@ -104,7 +104,7 @@
     </div>
 
     <!-- finish button -->
-    <button class="btn-main finish-btn">
+    <button class="btn-main finish-btn" [disabled]="submittedLesson" (click)="finishLesson()">
       أنهيتُ الدرس <i class="fa-solid fa-check fa-lg"></i>
     </button>
     <hr />

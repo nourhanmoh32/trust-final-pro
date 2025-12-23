@@ -50,6 +50,7 @@ export class Exam1 {
 
   examForm: FormGroup = this.fb.group({});
   score = 0;
+  examprog = 0;
   submitted = false;
   showResButton = false;
   viewResultDiv = false;

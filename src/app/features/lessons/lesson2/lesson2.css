@@ -82,16 +82,32 @@ h2 {
   color: var(--text-dark);
 }
 
+
 /* finish btn */
-.finish-btn {
-  font-size: 20px;
-  margin: auto;
-  width: fit-content;
+.finish-btn{
+    font-size: 20px;
+    margin: auto;
+    width: fit-content;
 }
-.finish-btn:hover i {
-  color: var(--primary);
-  animation: fa-flip 1s;
+.finish-btn:hover i{
+    color: var(--primary);
+    animation: fa-flip 1s ;
 }
+.finish-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.finish-btn:hover:disabled {
+  opacity: 0.6;
+  background: var(--primary);
+  color: var(--biege);
+  animation: none;
+}
+.finish-btn:hover:disabled i {
+  color: var(--biege);
+  animation: none 1s;
+}
+
 
 /* exam */
 .exam {

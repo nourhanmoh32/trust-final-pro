@@ -1,8 +1,9 @@
+
 section {
   min-height: 100vh;  
   background-image: url('/assets/images/10.jpg'); 
   background-size: cover;   
-  /* background-position: center; */
+  background-position: center;
   display: flex;
   justify-content: center;  
   align-items: center;   
@@ -21,6 +22,7 @@ h2{
 }
 h2 span{
     color: var(--secondary);
+    font-weight: bold;
 }
 
 /* buttons */
@@ -29,16 +31,19 @@ h2 span{
   gap: 15px;
   justify-content: center;
   margin: 20px 0;
+  font-size: 25px;
 }
 /* log out btn */
 .logOutBtn {
   margin-top: 20px;
-  
+  display: flex;  
+  justify-content: center;
 }
-.logOutBtn button{
+/* .logOutBtn button{
     font-size: 20px;
     padding: 10px 20px;
+    align-items: center;
     border: none;
     border-radius: 10px;
-}
+} */
 

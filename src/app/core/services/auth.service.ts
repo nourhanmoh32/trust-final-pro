@@ -64,49 +64,70 @@ export class AuthService {
     this._currentUser.set(null);
   }
 
-  // save exams degree
-  // saveExamDegree(result: any) {
-  //   const user = this._currentUser();
-
-  //   if (!user) {
-  //     return throwError(() => new Error('User not logged in'));
-  //   }
-
-  //   const updatedUser = {
-  //     ...user,
-  //     progress: {
-  //       lessonsCompleted: user.progress?.lessonsCompleted || [],
-  //       exams: [...(user.progress?.exams || []), result],
-  //     },
-  //   };
-  //   const { token, ...userDataToSave } = updatedUser; // حذف التوكن قبل الحفظ
-  //   return this.http.put(`${this.baseUrl}/${user.id}`, userDataToSave).pipe(
-  //     tap(() => {
-  //       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-  //       this._currentUser.set(updatedUser);
-  //     })
-  //   );
-  // }
   saveExamDegree(result: any) {
-  const user = this._currentUser();
-  if (!user) return throwError(() => new Error('User not logged in'));
+    const user = this._currentUser();
+    if (!user) return throwError(() => new Error('User not logged in'));
 
-  const updatedUser = {
-    ...user,
-    progress: {
-      ...user.progress,
-      exams: [...(user.progress?.exams || []), result]
+    // update exams
+    const oldExams = user.progress?.exams || [];
+    const otherExams = oldExams.filter((ex: any) => ex.lessonId !== result.lessonId);
+    const updatedExams = [...otherExams, result];
+
+    // exam Completed
+    const oldCompleted = user.progress?.examCompleted || [];
+    if (!oldCompleted.includes(result.lessonId)) {
+      oldCompleted.push(result.lessonId);
     }
-  };
 
-  const { token, ...payload } = updatedUser;
+    const updatedUser = {
+      ...user,
+      progress: {
+        ...user.progress,
+        exams: updatedExams,
+        examCompleted: oldCompleted,
+      },
+    };
 
-  return this.http.put(`${this.baseUrl}/${user.id}`, payload).pipe(
-    tap((response: any) => {
-      const userWithToken = { ...response, token: user.token };
-      this._currentUser.set(userWithToken);
-      localStorage.setItem('currentUser', JSON.stringify(userWithToken));
-    })
-  );
-}
+    const { token, ...payload } = updatedUser;
+
+    return this.http.put(`${this.baseUrl}/${user.id}`, payload).pipe(
+      tap((response: any) => {
+        const userWithToken = { ...response, token: user.token };
+        this._currentUser.set(userWithToken);
+        localStorage.setItem('currentUser', JSON.stringify(userWithToken));
+      })
+    );
+  }
+
+  // save lesson progress
+  saveLessonProg(result: any) {
+    const user = this._currentUser();
+    if (!user) return throwError(() => new Error('User not logged in'));
+
+    // update lessons
+    
+
+    const completedLessonsIds = user.progress?.lessonsCompleted || [];
+    if (!completedLessonsIds.includes(result.lessonId)) {
+      completedLessonsIds.push(result.lessonId);
+    }
+
+    const updatedUser = {
+      ...user,
+      progress: {
+        ...user.progress,
+        lessonsCompleted: completedLessonsIds,
+      },
+    };
+
+    const { token, ...payload } = updatedUser;
+
+    return this.http.put(`${this.baseUrl}/${user.id}`, payload).pipe(
+      tap((response: any) => {
+        const userWithToken = { ...response, token: user.token };
+        this._currentUser.set(userWithToken);
+        localStorage.setItem('currentUser', JSON.stringify(userWithToken));
+      })
+    );
+  }
 }
