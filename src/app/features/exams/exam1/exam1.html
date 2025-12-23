@@ -7,7 +7,7 @@
       <form [formGroup]="examForm" (ngSubmit)="submitExam()">
         <div class="formContent">
           @for (question of questions; track question.id) {
-          <h4>{{ question.question }}</h4>
+          <h4> <span>{{question.id}}</span> {{ question.question }}..</h4>
 
           <div class="qOptions">
             @for (option of question.options; track $index) {
@@ -21,7 +21,7 @@
           }
         </div>
 
-        <button type="submit" [disabled]="submitted">إنهاء الاختبار</button>
+        <button class="btn-main finish-btn" type="submit" [disabled]="submitted">تسليم الاختبار</button>
       </form>
 
       <!-- result btn  -->

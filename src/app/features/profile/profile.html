@@ -47,10 +47,11 @@
             <th scope="row">{{ lesson.order }}</th>
             <td data-label="الدرس">{{ lesson.title }}</td>
 
-            @let exam = getExamForLesson(lesson.id); @if (exam) {
+            @let exam = getExamForLesson(lesson.id);
+            @if (exam) {
             <td data-label="الدرجة">{{ exam.score }} / {{ exam.total }}</td>
-            <td data-label="تاريخ التسليم">{{ exam.date | date : 'yyyy/MM/dd' }} </td>
-            <td data-label="وقت التسليم">{{ exam.date | date:'shortTime' }} </td>
+            <td data-label="تاريخ التسليم">{{ exam.date | date : 'yyyy/MM/dd' }}</td>
+            <td data-label="وقت التسليم">{{ exam.date | date : 'shortTime' }}</td>
             } @else {
             <td data-label="الدرجة">—</td>
             <td data-label="تاريخ التسليم">لم يتم التسليم</td>

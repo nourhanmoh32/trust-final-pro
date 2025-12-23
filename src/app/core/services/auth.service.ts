@@ -91,21 +91,18 @@ export class AuthService {
   const user = this._currentUser();
   if (!user) return throwError(() => new Error('User not logged in'));
 
-  // 1. تجهيز كائن التحديث مع الحفاظ على البيانات القديمة
   const updatedUser = {
     ...user,
     progress: {
-      ...user.progress, // الحفاظ على lessonsCompleted إن وجد
+      ...user.progress,
       exams: [...(user.progress?.exams || []), result]
     }
   };
 
-  // 2. إرسال الطلب (يفضل حذف التوكن المؤقت قبل الإرسال لـ MockAPI)
   const { token, ...payload } = updatedUser;
 
   return this.http.put(`${this.baseUrl}/${user.id}`, payload).pipe(
     tap((response: any) => {
-      // 3. تحديث الـ Signal والـ LocalStorage بالبيانات الجديدة + التوكن
       const userWithToken = { ...response, token: user.token };
       this._currentUser.set(userWithToken);
       localStorage.setItem('currentUser', JSON.stringify(userWithToken));

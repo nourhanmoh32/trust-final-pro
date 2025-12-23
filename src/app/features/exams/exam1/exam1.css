@@ -1,5 +1,5 @@
-*{
-    direction: rtl;
+* {
+  direction: rtl;
 }
 section {
   padding: 20px;
@@ -18,17 +18,37 @@ section {
   padding: 22px 29px;
   margin: 20px;
 }
-h2{
-    color: var(--primary);
+h2 {
+  color: var(--primary);
 }
-.container h3{
-    color: var(--secondary);
-    font-weight: bold;
+.container h3 {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* form */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 /* submit exam btn */
-button:disabled {
-  background-color: #ccc;
+.finish-btn {
+  font-size: 20px;
+  margin: auto;
+  width: fit-content;
+}
+.finish-btn:hover i {
+  color: var(--primary);
+  animation: fa-flip 1s;
+}
+.finish-btn:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+.finish-btn:hover:disabled {
+  opacity: 0.6;
+  background: var(--primary);
+  color: var(--biege);
 }
