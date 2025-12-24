@@ -112,9 +112,26 @@
     <!-- exam1 -->
     <h3><i class="fa-solid fa-pencil"></i> الاختبار</h3>
     <div class="exam">
-      <button class="btn-main finish-btn">
+      <button class="btn-main finish-btn" routerLink="/exam2">
         انتقل إلى اختبار الدرس <i class="fa-solid fa-arrow-left-long fa-lg"></i>
       </button>
+    </div>
+
+    <!-- next & previous buttons -->
+    <div class="next&previous">
+      <!-- next lesson -->
+      <div class="nextLesson">
+        <button class="btn-main finish-btn" (click)="nextLesson(2)">
+          الدرس التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+
+      <!-- previous lesson -->
+      <div class="preLesson">
+        <button class="btn-main finish-btn" (click)="preLesson(2)">
+          <i class="fa-solid fa-arrow-right"></i> الدرس السابق
+        </button>
+      </div>
     </div>
   </div>
 </section>

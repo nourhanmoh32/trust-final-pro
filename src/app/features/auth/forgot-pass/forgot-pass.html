@@ -10,9 +10,15 @@
                 <div class=" mb-3">
                     <label for="formGroupExampleInput" class="form-label">البريد الإلكتروني</label>
                     <input formControlName="email" type="text" class="form-control" id="yourCode" placeholder="أدخل البريد الإلكتروني الخاص بك">
-                </div>            
+                </div>   
+                 <!-- reqierd email -->
+                @if (email?.invalid && email?.touched) {
+                    <div class="errors">
+                        <p>البريد الإلكتروني مطلوب!</p>
+                    </div>
+                }         
 
-                <button type="submit" routerLink="/verfyCode">استمرار..</button>
+                <button type="submit">استمرار..</button>
             </form>
         </div>
     </div>

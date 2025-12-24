@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { AuthService } from '../../../core/services/auth.service';
+import { BaseLesson } from '../../../shared/base Lesson/baseLesson';
 
 interface images{
   href: string;
@@ -12,8 +13,8 @@ interface images{
   templateUrl: './lesson1.html',
   styleUrl: './lesson1.css',
 })
-export class Lesson1 {
-  private authServe = inject(AuthService);
+export class Lesson1 extends BaseLesson{
+  // private authServe = inject(AuthService);
   lessonId = 1;
   
   submittedLesson = false;

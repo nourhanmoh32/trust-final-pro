@@ -57,7 +57,7 @@ export class Register {
 
     this.authApi.register(this.registerForm.value).subscribe((user) => {
       if (this.authApi.currentUser()?.token) {
-        alert('تم التسجيل بنجاح!');
+        alert('تم التسجيل بنجاح! 🎉');
         this.router.navigate(['/home']);
       } else {
         alert('حدث خطأ أثناء التسجيل');

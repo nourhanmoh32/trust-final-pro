@@ -37,6 +37,11 @@ label {
   color: var(--primary);
 }
 
+/* errors */
+form .errors {
+  color: red;
+}
+
 /* input */
 input {
   background-color: rgba(122, 122, 116, 0.445);

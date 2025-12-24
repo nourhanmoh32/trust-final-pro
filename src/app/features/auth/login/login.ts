@@ -58,7 +58,7 @@ export class Login {
 
     this.authApi.login(loginData, this.rememberMe).subscribe((user) => {
       if (this.authApi.currentUser()?.token) {
-        alert(` مرحبًا ${this.authApi.currentUser()?.fullName} `);
+        alert(` مرحبًا ${this.authApi.currentUser()?.fullName} 😃 `);
         this.router.navigate(['/home']);
       } else {
         alert('البريد الإلكتروني أو الرقم السري خطأ');

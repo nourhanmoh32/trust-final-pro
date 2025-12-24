@@ -33,6 +33,15 @@ export class AuthService {
     );
   }
 
+  // forgot password
+  checkEmail(email: string) {
+    const params = new HttpParams().set('email', email);
+
+    return this.http
+      .get<any[]>(this.baseUrl, { params })
+      .pipe(map((users) => (users.length ? users[0] : null)));
+  }
+
   // register
   register(dto: any) {
     return this.http.post<any>(this.baseUrl, dto).pipe(
@@ -105,8 +114,6 @@ export class AuthService {
     if (!user) return throwError(() => new Error('User not logged in'));
 
     // update lessons
-    
-
     const completedLessonsIds = user.progress?.lessonsCompleted || [];
     if (!completedLessonsIds.includes(result.lessonId)) {
       completedLessonsIds.push(result.lessonId);

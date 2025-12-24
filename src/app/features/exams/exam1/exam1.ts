@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 
 interface question {
@@ -57,7 +57,10 @@ export class Exam1 {
 
   ngOnInit(): void {
     this.questions.forEach((q) => {
-      this.examForm.addControl(q.id.toString(), this.fb.control<number | null>(null));
+      this.examForm.addControl(
+        q.id.toString(),
+        this.fb.control<number | null>(null, [Validators.required])
+      );
     });
   }
 
@@ -66,13 +69,18 @@ export class Exam1 {
     if (this.submitted) {
       return;
     }
+    if (this.examForm.invalid) {
+      console.log('exam invalid');
+      alert('يرجى الإجابة على جميع الأسئلة أولاً..');
+      return;
+    }
 
     this.submitted = true;
-    this.score=0;
+    this.score = 0;
 
     this.questions.forEach((q) => {
       const answers = this.examForm.get(q.id.toString())?.value;
-      if (Number(answers) === q.correctAnswer) {
+      if (answers === q.correctAnswer) {
         this.score++;
       }
     });
@@ -102,7 +110,7 @@ export class Exam1 {
   }
 
   // view Result button
-  viewResult(){
-    this.viewResultDiv= true;
+  viewResult() {
+    this.viewResultDiv = true;
   }
 }

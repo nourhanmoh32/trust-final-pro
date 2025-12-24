@@ -1,1 +1,42 @@
-<p>exam2 works!</p>
+<section>
+  <div class="container">
+    <h2><i class="fa-regular fa-circle-question"></i> اختبار مقدمة علم التجويد</h2>
+
+    <!-- exam card -->
+    <div class="card">
+      <form [formGroup]="examForm" (ngSubmit)="submitExam()">
+        <div class="formContent">
+          @for (question of questions; track question.id) {
+          <h4>
+            <span>{{ question.id }}</span> {{ question.question }}..
+          </h4>
+
+          <div class="qOptions">
+            @for (option of question.options; track $index) {
+            <label>
+              <input type="radio" [value]="$index" [formControlName]="question.id.toString()" />
+              {{ option }}
+            </label>
+            }
+          </div>
+          <hr />
+          }
+        </div>
+
+        <button class="btn-main finish-btn" type="submit" [disabled]="submitted" >
+          تسليم الاختبار <i class="fa-regular fa-circle-check fa-lg"></i>
+        </button>
+      </form>
+
+      <!-- result btn  -->
+      <div class="resultBtns">
+        @if (showResButton) {
+        <button class="viewResultBtn btn-main " type="submit" (click)="viewResult()">عرض النتيجة</button>
+        } 
+        @if (viewResultDiv) {
+        <h2>حققتَ"{{ score }} من {{ questions.length }}"</h2>
+        }
+      </div>
+    </div>
+  </div>
+</section>

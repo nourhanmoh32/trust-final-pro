@@ -1,23 +1,23 @@
-<section >
-    <div class="codeForm" id="verfiction">
-        <div class="container">
-            <div class="verfyContent">
-                <h2>أدخل الكود المكون من 3 أرقام</h2>
-                <p>الكود المكون من 3 أرقام قد تم إرساله إلى بريدك الإلكتروني.</p>
-            </div>
+<section>
+  <div class="codeForm" id="verfiction">
+    <div class="container">
+      <div class="verfyContent">
+        <h2>أدخل الكود المكون من 4 أرقام</h2>
+        <p>الكود المكون من 4 أرقام قد تم إرساله إلى بريدك الإلكتروني.</p>
+      </div>
 
-            <form [formGroup]="codeForm" (ngSubmit)="verify()">
-                <div class="inputs mb-3">
-                    <input formControlName="code1"  class="form-control" placeholder="__">
-                    <input formControlName="code2"  class="form-control"  placeholder="__">
-                    <input formControlName="code3"  class="form-control"  placeholder="__">
-                </div>
-            </form>
-
-            <div class="verfButtons">
-                <button type="submit">تأكيد</button>
-                <button type="submit" class="cancel bg-danger">إلغاء</button>
-            </div>
+      <form [formGroup]="codeForm" (ngSubmit)="verify()">
+        <div class="inputs mb-3">
+          <input formControlName="code1" maxlength="1" class="form-control" type="text" />
+          <input formControlName="code2" maxlength="1" class="form-control" type="text" />
+          <input formControlName="code3" maxlength="1" class="form-control" type="text" />
+          <input formControlName="code4" maxlength="1" class="form-control" type="text" />
         </div>
+        <div class="verfButtons">
+          <button type="submit" >تأكيد</button>
+          <button type="button" class="cancel bg-danger" (click)="cancel()">إلغاء</button>
+        </div>
+      </form>
     </div>
+  </div>
 </section>

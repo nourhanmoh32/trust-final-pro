@@ -15,7 +15,7 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent:() => import('./features/auth/login/login').then(l => l.Login),
+    loadComponent: () => import('./features/auth/login/login').then((l) => l.Login),
   },
   {
     path: 'forgotPass',
@@ -37,31 +37,43 @@ export const routes: Routes = [
   },
   {
     path: 'lessonsDash',
-    loadComponent: () => import('./features/lessons/lessons-dash/lessons-dash').then(m => m.LessonsDash),
-    canActivate: [authGuard]
+    loadComponent: () =>
+      import('./features/lessons/lessons-dash/lessons-dash').then((m) => m.LessonsDash),
+    canActivate: [authGuard],
   },
-  
+
   {
     path: 'lesson1',
-    loadComponent: () =>
-      import('./features/lessons/lesson1/lesson1').then(m => m.Lesson1)
+    loadComponent: () => import('./features/lessons/lesson1/lesson1').then((m) => m.Lesson1),
+    canActivate: [authGuard],
   },
 
   {
     path: 'lesson2',
-    loadComponent: () =>
-      import('./features/lessons/lesson2/lesson2').then(m => m.Lesson2)
+    loadComponent: () => import('./features/lessons/lesson2/lesson2').then((m) => m.Lesson2),
+    canActivate: [authGuard],
+  },
+  
+   {
+    path: 'lesson3',
+    loadComponent: () => import('./features/lessons/lesson2/lesson2').then((m) => m.Lesson2),
+    canActivate: [authGuard],
   },
 
   {
     path: 'profile',
-    loadComponent: ()=>
-      import('./features/profile/profile').then(m => m.Profile)
+    loadComponent: () => import('./features/profile/profile').then((m) => m.Profile),
+    canActivate: [authGuard],
   },
 
   {
     path: 'exam1',
-    loadComponent: ()=>
-      import('./features/exams/exam1/exam1').then(m => m.Exam1)
+    loadComponent: () => import('./features/exams/exam1/exam1').then((m) => m.Exam1),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'exam2',
+    loadComponent: () => import('./features/exams/exam2/exam2').then((m) => m.Exam2),
+    canActivate: [authGuard],
   },
 ];
