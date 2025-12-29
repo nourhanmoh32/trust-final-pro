@@ -9,6 +9,7 @@ section {
   align-items: center;   
   width: 100%;
   direction: rtl;
+  padding: 20px;
 }
 
 .secContent {

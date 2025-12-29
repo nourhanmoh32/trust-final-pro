@@ -48,6 +48,8 @@ section{
 .progressCards .row{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 .progressCards .progCard {
   max-width: 200px;

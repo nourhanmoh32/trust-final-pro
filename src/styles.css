@@ -23,7 +23,7 @@ body {
   color: var(--biege);
   border: none;
   font-weight: bold;
-  padding: 10px 25px;
+  padding: .5rem .7rem;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: all 0.3s ease;
