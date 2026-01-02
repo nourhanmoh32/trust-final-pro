@@ -1,4 +1,9 @@
-
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* عشان يمنع أي سكرول عرضي بسبب المسافة اليمين */
+}
 section {
   min-height: 100vh;  
   background-image: url('/assets/images/10.jpg'); 
