@@ -1,70 +1,53 @@
-section {
-  min-height: 100vh;
-  min-height: 100dvh; /* تحديث ذكي لارتفاع الشاشة على الموبايل */
-  
-  /* الخلفية */
-  background-image: url('/assets/images/10.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
 
-  /* الترتيب */
+section {
+  min-height: 100vh;  
+  background-image: url('/assets/images/10.jpg'); 
+  background-size: cover;   
+  background-position: center center;
+  background-attachment: scroll;
   display: flex;
-  flex-direction: column; /* ترتيب العناصر تحت بعضها */
-  justify-content: center;
-  align-items: center;
-  
+  justify-content: center;  
+  align-items: center;   
   width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
   direction: rtl;
-  overflow: hidden; /* لمنع أي سكرول عرضي مفاجئ */
+  padding: 20px;
 }
 
 .secContent {
-  width: 100%;
-  max-width: 800px; /* تحديد أقصى عرض للمحتوى ليكون مريح للعين */
-  text-align: center;
-  /* الخط سيصغر تلقائياً للموبايل ويكبر للاب توب */
-  font-size: clamp(1.2rem, 5vw, 1.8rem); 
+  text-align: center;  
+  font-size: 30px;  
 }
 
 /* header */
-h2 {
-  color: var(--text-color);
-  margin-bottom: 10px;
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
+h2{
+    color: var(--text-color);
+}
+h2 span{
+    color: var(--secondary);
+    font-weight: bold;
 }
 
-h2 span {
-  color: var(--secondary);
-  font-weight: bold;
-}
-
-/* buttons group */
+/* buttons */
 .topBtns {
   display: flex;
-  flex-wrap: wrap; /* مهم جداً: لو الزراير ميكفتش جنب بعض تنزل تحت بعض تلقائي */
   gap: 15px;
   justify-content: center;
   margin: 20px 0;
-  width: 100%;
+  font-size: 25px;
 }
-
-/* زراير التحكم */
-.topBtns button, .logOutBtn button {
-  /* حجم خط مرن للزراير */
-  font-size: clamp(0.9rem, 4vw, 1.3rem);
-  padding: 10px 25px;
-  cursor: pointer;
-  white-space: nowrap; /* يمنع انقسام النص داخل الزرار */
-}
-
 /* log out btn */
 .logOutBtn {
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
+  margin-top: 20px;
+  display: flex;  
   justify-content: center;
 }
+ button{
+    font-size: 20px;
+    padding: 10px 20px;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 10px;
+}
+
