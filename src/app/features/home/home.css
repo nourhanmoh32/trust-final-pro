@@ -5,10 +5,13 @@ section {
   background-size: cover;   
   background-position: center center;
   background-attachment: scroll;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;  
   align-items: center;   
   width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   direction: rtl;
   padding: 20px;
 }
