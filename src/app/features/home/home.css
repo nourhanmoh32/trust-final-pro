@@ -3,8 +3,8 @@ section {
   min-height: 100vh;  
   background-image: url('/assets/images/10.jpg'); 
   background-size: cover;   
-  background-position: center center;
-  background-attachment: scroll;
+  background-position: center ;
+  /* background-attachment: scroll; */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;  
