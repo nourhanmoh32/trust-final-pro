@@ -1,57 +1,70 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* عشان يمنع أي سكرول عرضي بسبب المسافة اليمين */
-}
 section {
-  min-height: 100vh;  
-  background-image: url('/assets/images/10.jpg'); 
-  background-size: cover;   
+  min-height: 100vh;
+  min-height: 100dvh; /* تحديث ذكي لارتفاع الشاشة على الموبايل */
+  
+  /* الخلفية */
+  background-image: url('/assets/images/10.jpg');
+  background-size: cover;
   background-position: center center;
+  background-repeat: no-repeat;
   background-attachment: scroll;
+
+  /* الترتيب */
   display: flex;
-  justify-content: center;  
-  align-items: center;   
+  flex-direction: column; /* ترتيب العناصر تحت بعضها */
+  justify-content: center;
+  align-items: center;
+  
   width: 100%;
-  direction: rtl;
   box-sizing: border-box;
-  /* padding: 20px; */
+  padding: 20px;
+  direction: rtl;
+  overflow: hidden; /* لمنع أي سكرول عرضي مفاجئ */
 }
 
 .secContent {
-  text-align: center;  
-  font-size: 30px;  
+  width: 100%;
+  max-width: 800px; /* تحديد أقصى عرض للمحتوى ليكون مريح للعين */
+  text-align: center;
+  /* الخط سيصغر تلقائياً للموبايل ويكبر للاب توب */
+  font-size: clamp(1.2rem, 5vw, 1.8rem); 
 }
 
 /* header */
-h2{
-    color: var(--text-color);
-}
-h2 span{
-    color: var(--secondary);
-    font-weight: bold;
+h2 {
+  color: var(--text-color);
+  margin-bottom: 10px;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
 }
 
-/* buttons */
+h2 span {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+/* buttons group */
 .topBtns {
   display: flex;
+  flex-wrap: wrap; /* مهم جداً: لو الزراير ميكفتش جنب بعض تنزل تحت بعض تلقائي */
   gap: 15px;
   justify-content: center;
   margin: 20px 0;
-  font-size: 25px;
+  width: 100%;
 }
+
+/* زراير التحكم */
+.topBtns button, .logOutBtn button {
+  /* حجم خط مرن للزراير */
+  font-size: clamp(0.9rem, 4vw, 1.3rem);
+  padding: 10px 25px;
+  cursor: pointer;
+  white-space: nowrap; /* يمنع انقسام النص داخل الزرار */
+}
+
 /* log out btn */
 .logOutBtn {
-  margin-top: 20px;
-  display: flex;  
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
   justify-content: center;
 }
-/* .logOutBtn button{
-    font-size: 20px;
-    padding: 10px 20px;
-    align-items: center;
-    border: none;
-    border-radius: 10px;
-} */
-
