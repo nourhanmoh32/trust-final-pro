@@ -10,6 +10,7 @@ section {
   align-items: center;   
   width: 100%;
   direction: rtl;
+  box-sizing: border-box;
   padding: 20px;
 }
 
